@@ -1,0 +1,131 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  background-color: #121826;
+  color: #f1f5f9;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- Custom scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #121826;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a3348;
+  border-radius: 9999px;
+  border: 2px solid #121826;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a4560;
+}
+
+/* ---------- Range inputs (progress scrubber + volume) ---------- */
+input[type="range"].player-scrubber,
+input[type="range"].volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 9999px;
+  outline: none;
+}
+
+input[type="range"].player-scrubber {
+  height: 4px;
+}
+input[type="range"].volume-slider {
+  height: 4px;
+}
+
+input[type="range"].player-scrubber::-webkit-slider-runnable-track,
+input[type="range"].volume-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 9999px;
+}
+
+input[type="range"].player-scrubber::-webkit-slider-thumb,
+input[type="range"].volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  margin-top: -5.5px;
+  border-radius: 9999px;
+  background: #e8a33d;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"].player-scrubber::-webkit-slider-thumb:active,
+input[type="range"].volume-slider::-webkit-slider-thumb:active {
+  transform: scale(1.25);
+}
+
+input[type="range"].player-scrubber::-moz-range-track,
+input[type="range"].volume-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 9999px;
+  background: #2a3348;
+}
+
+input[type="range"].player-scrubber::-moz-range-thumb,
+input[type="range"].volume-slider::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  border: none;
+  border-radius: 9999px;
+  background: #e8a33d;
+  cursor: pointer;
+}
+
+/* ---------- Equalizer bars (active-track indicator) ---------- */
+.eq-bar {
+  display: inline-block;
+  animation: eq-bounce 0.9s ease-in-out infinite;
+  background-color: #e8a33d;
+  width: 3px;
+  border-radius: 2px;
+}
+.eq-bar:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.eq-bar:nth-child(3) {
+  animation-delay: 0.3s;
+}
+@keyframes eq-bounce {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* ---------- Fade-in for search results ---------- */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in {
+  animation: fade-in 0.25s ease-out both;
+}
